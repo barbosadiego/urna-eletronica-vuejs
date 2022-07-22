@@ -41,13 +41,15 @@ export default {
   grid-template-columns: repeat(3,1fr);
   gap: 10px;
 }
+.numeros button{
+  font-size: 2.2rem;
+}
 .numeros button:last-child{
   grid-column: 2;
 }
 .teclado button{
   width: 100%;
   height: 60px;
-  font-size: 1.2rem;
   border-radius: 5px;
   background-color: var(--ballot-box-keyboard-button-color);
   color: var(--light-text-color);
@@ -58,6 +60,7 @@ export default {
 }
 .acoes button{
   color: var(--dark-text-color);
+  font-size: 1rem;
 }
 .acoes .btn-branco{
   background-color: var(--ballot-box-white-button-color);
