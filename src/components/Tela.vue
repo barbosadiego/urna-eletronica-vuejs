@@ -1,13 +1,22 @@
 <template>
   <div class="tela">
-    tela
+    <div v-if="tela !== 'fim'" class="votacao">
+      <p>Seu voto para:</p>
+      <h1>{{tela}}</h1>
+      <p>Números:</p>
+    </div>
+    <div v-if="tela === 'fim'" class="fim">
+      fim
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: 'TheTela',
-  props: {},
+  props: {
+    tela: String,
+  },
 }
 </script>
 
@@ -18,6 +27,9 @@ export default {
   background-color: var(--ballot-box-screen-color);
   border-radius: 5px;
   border: 2px solid var(--light-border-color);
+  padding: 10px;
 }
-
+h1{
+  text-transform: uppercase;
+}
 </style>

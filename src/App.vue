@@ -2,7 +2,11 @@
   <div id="app">
     <div class="urna">
       <div class="urna-tela">
-        <Tela />
+        <Tela 
+          :tela="tela"
+          :candidatoNumero="candidatoNumero"
+          :quantidadeNumeros="quantidadeNumeros"
+        />
       </div>
       <div class="urna-teclado">
         <Teclado />
@@ -21,6 +25,16 @@ export default {
     Teclado,
     Tela,
   },
+  data(){
+    return{
+      tela: 'prefeito',
+      quantidadeNumeros: 2,
+      candidatoNumero: '',
+    }
+  },
+  methods:{
+
+  }
 };
 </script>
 
