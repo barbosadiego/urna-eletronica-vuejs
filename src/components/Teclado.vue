@@ -61,6 +61,7 @@ export default {
 .acoes button{
   color: var(--dark-text-color);
   font-size: 1rem;
+  font-weight: bold;
 }
 .acoes .btn-branco{
   background-color: var(--ballot-box-white-button-color);
