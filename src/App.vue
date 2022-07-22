@@ -1,16 +1,21 @@
 <template>
   <div id="app">
     <div class="urna">
+      <div class="urna-teclado">
+        <Teclado />
 
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import Teclado from '@/components/Teclado.vue'
 
 export default {
   name: 'App',
   components: {
+    Teclado,
   }
 }
 </script>
@@ -67,6 +72,14 @@ button:active{
   width: 1000px;
   height: 500px;
   background-color: var(--ballot-box-background-color);
+  border-radius: 5px;
+  padding: 20px;
+  display: flex;
+}
+.urna-teclado{
+  width: 40%;
+  height: 100%;
+  background-color: var(--ballot-box-keyboard-color);
   border-radius: 5px;
 }
 </style>
