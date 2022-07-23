@@ -2,14 +2,14 @@
   <div id="app">
     <div class="urna">
       <div class="urna-tela">
-        <Tela 
+        <Tela
           :tela="tela"
           :candidatoNumero="candidatoNumero"
           :quantidadeNumeros="quantidadeNumeros"
         />
       </div>
       <div class="urna-teclado">
-        <Teclado />
+        <Teclado :inserirNumero="inserirNumero" />
       </div>
     </div>
   </div>
@@ -25,16 +25,49 @@ export default {
     Teclado,
     Tela,
   },
-  data(){
-    return{
+  data() {
+    return {
       tela: 'prefeito',
       quantidadeNumeros: 2,
       candidatoNumero: '',
-    }
+      candidatos: {
+        prefeito: {
+          '01': {
+            nome: 'Ash',
+            partido: 'Pokemon',
+            imagem:
+              'https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/ash.png',
+          },
+          '08': {
+            nome: 'Vegeta',
+            partido: 'Dragon Ball',
+            imagem:
+              'https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/vegeta.png',
+          },
+        },
+        vereador: {
+          '01234': {
+            nome: 'Pikachu',
+            partido: 'Pokemon',
+            imagem:
+              'https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/pikachu.png',
+          },
+          '08001': {
+            nome: 'Goku',
+            partido: 'Dragon Ball',
+            imagem:
+              'https://raw.githubusercontent.com/william-costa/wdev-urna-eletronica-resources/master/images/goku.png',
+          },
+        },
+      },
+    };
   },
-  methods:{
-
-  }
+  methods: {
+    inserirNumero(numero) {
+      if (this.candidatoNumero.length === this.quantidadeNumeros) return false;
+      this.candidatoNumero += '' + numero;
+    },
+  },
 };
 </script>
 
@@ -102,7 +135,7 @@ button:active {
   background-color: var(--ballot-box-keyboard-color);
   border-radius: 5px;
 }
-.urna-tela{
+.urna-tela {
   width: 55%;
   height: 100%;
 }

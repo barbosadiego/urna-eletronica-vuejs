@@ -1,16 +1,16 @@
 <template>
   <div class="teclado">
     <div class="numeros">
-      <button>1</button>
-      <button>2</button>
-      <button>3</button>
-      <button>4</button>
-      <button>5</button>
-      <button>6</button>
-      <button>7</button>
-      <button>8</button>
-      <button>9</button>
-      <button>0</button>
+      <button @click="inserirNumero(1)">1</button>
+      <button @click="inserirNumero(2)">2</button>
+      <button @click="inserirNumero(3)">3</button>
+      <button @click="inserirNumero(4)">4</button>
+      <button @click="inserirNumero(5)">5</button>
+      <button @click="inserirNumero(6)">6</button>
+      <button @click="inserirNumero(7)">7</button>
+      <button @click="inserirNumero(8)">8</button>
+      <button @click="inserirNumero(9)">9</button>
+      <button @click="inserirNumero(0)">0</button>
     </div>
     <div class="acoes">
       <button class="btn-branco">BRANCO</button>
@@ -23,7 +23,9 @@
 <script>
 export default {
   name: 'TheTeclado',
-  props: {},
+  props: {
+    inserirNumero: Function,
+  },
 };
 </script>
 
