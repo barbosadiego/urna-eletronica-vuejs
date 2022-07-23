@@ -18,6 +18,22 @@
         />
       </div>
     </div>
+    <div class="lista">
+      <h1>Candidatos</h1>
+      <div>
+        <h2>Prefeito: ASH</h2>
+        <span>Número: 01</span>
+        <h2>Prefeito: VEGETA</h2>
+        <span>Número: 08</span>
+      </div>
+      <div>
+        <h2>Vereador: PIKACHU</h2>
+        <span>Número: 01234</span>
+        <h2>Vereador: GOKU</h2>
+        <span>Número: 08001</span>
+      </div>
+      
+    </div>
   </div>
 </template>
 
@@ -183,12 +199,14 @@ button:active {
   width: 100%;
   background-color: var(--background-color);
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 .urna {
   width: 1000px;
   height: 500px;
+  margin-left: auto;
+  margin-right: auto;
   background-color: var(--ballot-box-background-color);
   border-radius: 5px;
   padding: 20px;
@@ -204,5 +222,11 @@ button:active {
 .urna-tela {
   width: 55%;
   height: 100%;
+}
+.lista{
+  background-color: var(--ballot-box-background-color);
+  width: 300px;
+  height: 100%;
+  padding: 20px;
 }
 </style>
