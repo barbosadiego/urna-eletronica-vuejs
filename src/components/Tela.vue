@@ -29,7 +29,7 @@
         <p>VERDE para <strong>CONFIRMAR</strong></p>
       </div>
     </div>
-    <div v-if="tela === 'fim'" class="tela-fim">fim</div>
+    <div v-if="tela === 'fim'" class="tela-fim">FIM</div>
   </div>
 </template>
 
@@ -91,5 +91,13 @@ flex-wrap: wrap;
 .tela-instrucoes{
   width: 100%;
   border-top: 1px solid var(--dark-border-color);
+}
+.tela-fim{
+  height: 100%;
+  width: 100%;
+  font-size: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>

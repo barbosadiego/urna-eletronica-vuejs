@@ -15,7 +15,7 @@
     <div class="acoes">
       <button class="btn-branco">BRANCO</button>
       <button @click="corrigir" class="btn-corrige">CORRIGE</button>
-      <button class="btn-confirma">CONFIRMA</button>
+      <button @click="confirma" class="btn-confirma">CONFIRMA</button>
     </div>
   </div>
 </template>
@@ -26,6 +26,7 @@ export default {
   props: {
     inserirNumero: Function,
     corrigir: Function,
+    confirma: Function,
   },
 };
 </script>

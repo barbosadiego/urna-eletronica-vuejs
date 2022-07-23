@@ -13,6 +13,7 @@
         <Teclado 
           :inserirNumero="inserirNumero"
           :corrigir="corrigir"
+          :confirma="confirma"
         />
       </div>
     </div>
@@ -28,6 +29,54 @@ export default {
   components: {
     Teclado,
     Tela,
+  },
+  methods: {
+    inserirNumero(numero) {
+      if (this.candidatoNumero.length === this.quantidadeNumeros) {
+        return false
+      }
+      this.candidatoNumero += '' + numero;
+      this.exibirCandidato()
+    },
+    exibirCandidato(){
+      if (this.candidatoNumero.length < this.quantidadeNumeros) return false;
+
+      if (this.candidatos[this.tela][this.candidatoNumero]) {
+        this.candidatoObj = this.candidatos[this.tela][this.candidatoNumero];
+        return true
+      }
+
+      this.candidatoObj.nome = 'Voto nulo'
+      this.candidatoObj.partido = 'Voto nulo'
+    },
+    corrigir(){
+      this.candidatoNumero = '';
+      this.candidatoObj = {};
+    },
+    confirma(){
+      if (this.tela === 'prefeito') {
+        this.tela = 'vereador';
+        this.quantidadeNumeros = 5;
+        this.limparTela();
+        return true
+      }
+      if (this.tela === 'vereador') {
+        this.tela = 'fim';
+        this.limparTela();
+
+        const context = this;
+
+        setTimeout(() => {
+          context.tela = 'prefeito';
+          context.quantidadeNumeros = 2;
+          context.candidatoObj = {};
+        }, 3000);
+      }
+    },
+    limparTela(){
+      this.candidatoNumero = '';
+      this.candidatoObj = {};
+    }
   },
   data() {
     return {
@@ -66,30 +115,6 @@ export default {
         },
       },
     };
-  },
-  methods: {
-    inserirNumero(numero) {
-      if (this.candidatoNumero.length === this.quantidadeNumeros) {
-        return false
-      }
-      this.candidatoNumero += '' + numero;
-      this.exibirCandidato()
-    },
-    exibirCandidato(){
-      if (this.candidatoNumero.length < this.quantidadeNumeros) return false;
-
-      if (this.candidatos[this.tela][this.candidatoNumero]) {
-        this.candidatoObj = this.candidatos[this.tela][this.candidatoNumero];
-        return true
-      }
-
-      this.candidatoObj.nome = 'Voto nulo'
-      this.candidatoObj.partido = 'Voto nulo'
-    },
-    corrigir(){
-      this.candidatoNumero = '';
-      this.candidatoObj = {};
-    }
   },
 };
 </script>
