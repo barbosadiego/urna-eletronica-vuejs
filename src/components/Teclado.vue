@@ -14,7 +14,7 @@
     </div>
     <div class="acoes">
       <button class="btn-branco">BRANCO</button>
-      <button class="btn-corrige">CORRIGE</button>
+      <button @click="corrigir" class="btn-corrige">CORRIGE</button>
       <button class="btn-confirma">CONFIRMA</button>
     </div>
   </div>
@@ -25,6 +25,7 @@ export default {
   name: 'TheTeclado',
   props: {
     inserirNumero: Function,
+    corrigir: Function,
   },
 };
 </script>

@@ -10,7 +10,10 @@
         />
       </div>
       <div class="urna-teclado">
-        <Teclado :inserirNumero="inserirNumero" />
+        <Teclado 
+          :inserirNumero="inserirNumero"
+          :corrigir="corrigir"
+        />
       </div>
     </div>
   </div>
@@ -77,7 +80,15 @@ export default {
 
       if (this.candidatos[this.tela][this.candidatoNumero]) {
         this.candidatoObj = this.candidatos[this.tela][this.candidatoNumero];
+        return true
       }
+
+      this.candidatoObj.nome = 'Voto nulo'
+      this.candidatoObj.partido = 'Voto nulo'
+    },
+    corrigir(){
+      this.candidatoNumero = '';
+      this.candidatoObj = {};
     }
   },
 };
