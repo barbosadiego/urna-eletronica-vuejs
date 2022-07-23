@@ -24,6 +24,8 @@
 <script>
 import Teclado from '@/components/Teclado.vue';
 import Tela from '@/components/Tela.vue';
+import ConfirmAudio from '@/assets/confirm.wav';
+import KeyAudio from '@/assets/key.wav';
 
 export default {
   name: 'App',
@@ -33,11 +35,12 @@ export default {
   },
   methods: {
     inserirNumero(numero) {
+      this.ativarSom(KeyAudio)
       if (this.candidatoNumero.length === this.quantidadeNumeros) {
         return false
       }
       this.candidatoNumero += '' + numero;
-      this.exibirCandidato()
+      this.exibirCandidato();
     },
     exibirCandidato(){
       if (this.candidatoNumero.length < this.quantidadeNumeros) return false;
@@ -51,17 +54,20 @@ export default {
       this.candidatoObj.partido = 'Voto nulo'
     },
     corrigir(){
+      this.ativarSom(KeyAudio)
       this.candidatoNumero = '';
       this.candidatoObj = {};
     },
     confirma(){
       if (this.tela === 'prefeito' && this.candidatoNumero.length === this.quantidadeNumeros) {
+        this.ativarSom(ConfirmAudio)
         this.tela = 'vereador';
         this.quantidadeNumeros = 5;
         this.limparTela();
         return true
       }
       if (this.tela === 'vereador' && this.candidatoNumero.length === this.quantidadeNumeros) {
+        this.ativarSom(ConfirmAudio)
         this.tela = 'fim';
         this.limparTela();
 
@@ -79,10 +85,15 @@ export default {
       this.candidatoObj = {};
     },
     votoEmBranco(){
+      this.ativarSom(KeyAudio)
       this.candidatoObj.nome = 'VOTO EM BRANCO';
       this.candidatoObj.partido = 'VOTO EM BRANCO';
       this.candidatoNumero = '--'
       if(this.tela === 'vereador') this.candidatoNumero = "-----"
+    },
+    ativarSom(url){
+      const audio = new Audio(url);
+      audio.play();
     }
   },
   data() {
