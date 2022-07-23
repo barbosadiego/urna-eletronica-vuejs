@@ -13,7 +13,7 @@
       <button @click="inserirNumero(0)">0</button>
     </div>
     <div class="acoes">
-      <button class="btn-branco">BRANCO</button>
+      <button @click="votoEmBranco" class="btn-branco">BRANCO</button>
       <button @click="corrigir" class="btn-corrige">CORRIGE</button>
       <button @click="confirma" class="btn-confirma">CONFIRMA</button>
     </div>
@@ -27,6 +27,7 @@ export default {
     inserirNumero: Function,
     corrigir: Function,
     confirma: Function,
+    votoEmBranco: Function,
   },
 };
 </script>

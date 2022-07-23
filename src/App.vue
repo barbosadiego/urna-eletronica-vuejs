@@ -14,6 +14,7 @@
           :inserirNumero="inserirNumero"
           :corrigir="corrigir"
           :confirma="confirma"
+          :votoEmBranco="votoEmBranco"
         />
       </div>
     </div>
@@ -54,13 +55,13 @@ export default {
       this.candidatoObj = {};
     },
     confirma(){
-      if (this.tela === 'prefeito') {
+      if (this.tela === 'prefeito' && this.candidatoNumero.length === this.quantidadeNumeros) {
         this.tela = 'vereador';
         this.quantidadeNumeros = 5;
         this.limparTela();
         return true
       }
-      if (this.tela === 'vereador') {
+      if (this.tela === 'vereador' && this.candidatoNumero.length === this.quantidadeNumeros) {
         this.tela = 'fim';
         this.limparTela();
 
@@ -70,12 +71,18 @@ export default {
           context.tela = 'prefeito';
           context.quantidadeNumeros = 2;
           context.candidatoObj = {};
-        }, 3000);
+        }, 2000);
       }
     },
     limparTela(){
       this.candidatoNumero = '';
       this.candidatoObj = {};
+    },
+    votoEmBranco(){
+      this.candidatoObj.nome = 'VOTO EM BRANCO';
+      this.candidatoObj.partido = 'VOTO EM BRANCO';
+      this.candidatoNumero = '--'
+      if(this.tela === 'vereador') this.candidatoNumero = "-----"
     }
   },
   data() {
