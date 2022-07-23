@@ -6,6 +6,7 @@
           :tela="tela"
           :candidatoNumero="candidatoNumero"
           :quantidadeNumeros="quantidadeNumeros"
+          :candidatoObj="candidatoObj"
         />
       </div>
       <div class="urna-teclado">
@@ -30,6 +31,7 @@ export default {
       tela: 'prefeito',
       quantidadeNumeros: 2,
       candidatoNumero: '',
+      candidatoObj: {},
       candidatos: {
         prefeito: {
           '01': {
@@ -64,9 +66,19 @@ export default {
   },
   methods: {
     inserirNumero(numero) {
-      if (this.candidatoNumero.length === this.quantidadeNumeros) return false;
+      if (this.candidatoNumero.length === this.quantidadeNumeros) {
+        return false
+      }
       this.candidatoNumero += '' + numero;
+      this.exibirCandidato()
     },
+    exibirCandidato(){
+      if (this.candidatoNumero.length < this.quantidadeNumeros) return false;
+
+      if (this.candidatos[this.tela][this.candidatoNumero]) {
+        this.candidatoObj = this.candidatos[this.tela][this.candidatoNumero];
+      }
+    }
   },
 };
 </script>

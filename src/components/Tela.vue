@@ -13,6 +13,10 @@
           {{ value }}
         </div>
       </div>
+      <div v-if="candidatoObj" class="tela-candidato">
+        <p>Nome: {{ candidatoObj.nome ? candidatoObj.nome : '__________' }}</p>
+        <p>Partido: {{ candidatoObj.partido ? candidatoObj.partido : '_________' }}</p>
+      </div>
     </div>
     <div v-if="tela === 'fim'" class="fim">fim</div>
   </div>
@@ -25,6 +29,7 @@ export default {
     tela: String,
     quantidadeNumeros: Number,
     candidatoNumero: String,
+    candidatoObj: Object,
   },
 };
 </script>
